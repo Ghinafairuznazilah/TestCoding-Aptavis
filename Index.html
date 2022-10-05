@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>Klasemen Sepak Bola</title>
+  </head>
+  <body>
+
+
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+            <div class="container-fluid">
+              <a class="navbar-brand disabled" href="#">Klasemen Sepak Bola</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav>
+
+          <div class="row gx-3 gy-3">
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div>
+                                <h4 class="text-center">Tambahkan Data Klub Sepak Bola</h4>
+                
+                                <div class="mb-3">
+                                <label for="namaklub" class="form-label">Nama Club</label>
+                                <input type="text" class="form-control" id="namaklub" placeholder="Masukkan nama klub kamu" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kotaklub" class="form-label">Kota Club</label>
+                                    <input type="text" class="form-control" id="kotaklub" placeholder="Masukkan nama kota klub kamu" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary" onClick="add();" value="add">Submit</button>
+                            </div>
+                           
+                            
+                        </form>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="list">
+                                <h3 class="text-center">List Klub</h3>
+                                <ul id="isiArray">Isi Array</ul>
+                        
+                            </div>
+                           
+                            
+                        </form>
+                    </div>
+                  </div>
+            </div>
+
+
+          </div>
+
+          <div class="row mt-4">
+            <h2 class="text-center">Skor Pertandingan</h2>
+
+            <div class="row">
+              <div class="col-md-6">
+                Pilih Cara Input Skor (pilih salah satu mohon klik ulang pilihan) :
+                <br/>
+                <label><input type="radio" name="type" value="one"  checked/>One by One</label>
+                <label><input type="radio" name="type" value="multiple" />Multiple</label>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-4 mb-4" id="one">
+              <div class="card">
+                  <div class="card-body">
+                      <form>
+                          <div>
+                              <h4 class="text-center">Skor</h4>
+                              <div class="row">
+                                  <div class="col-md-5">
+                                      <select class="form-control form-control-md mt-1" id="klub" required>
+                                        <option>Pilih Club ke-1</option>
+                                      </select>
+                                      <div class="mt-1">
+                                        <input type="number" class="form-control" id="skorklub1" placeholder="Masukkan Skor klub ke-1" required>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                      <select class="form-control form-control-md mt-1" id="klub" required>
+                                        <option>Pilih Club ke-2</option>
+                                      </select>
+                                      <div class="mt-1">
+                                        <input type="number" class="form-control" id="skorklub2" placeholder="Masukkan Skor klub ke-2" required>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-2 mt-1">
+                                      <button type="submit" class="btn btn-primary" onClick="masukanskor();" value="masukanskor">Simpan</button>
+                                    </div>
+                              </div>
+                                  
+        
+                          </div>
+                              
+                </div>
+                         
+                          
+                      </form>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mt-4 mb-4" id="multiple">
+                  <div class="card">
+                      <div class="card-body">
+                          <form>
+                              <div>
+                                  <h4 class="text-center">Skor Multiple</h4>
+                                  <div class="row">
+                                      <div class="col-md-5">
+                                          <select class="form-control form-control-md mt-1" id="klub" required>
+                                            <option>Pilih Club ke-1</option>
+                                          </select>
+                                          <div class="mt-1">
+                                            <input type="number" class="form-control" id="skorklub" placeholder="Masukkan Skor klub ke-1" required>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                          <select class="form-control form-control-md mt-1" id="klub" required>
+                                            <option>Pilih Club ke-2</option>
+                                          </select>
+                                          <div class="mt-1">
+                                            <input type="number" class="form-control" id="skorklub" placeholder="Masukkan Skor klub ke-2" required>
+                                          </div>
+                                        </div>
+    
+                                        <div class="col-md-2 mt-1">
+                                          <button type="submit" class="btn btn-primary" onClick="masukanskor();" value="masukanskor">Submit</button>
+                                        </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-md-5">
+                                        <select class="form-control form-control-md mt-1" id="klub">
+                                          <option>Pilih Club</option>
+                                        </select>
+                                        <div class="mt-1">
+                                          <input type="number" class="form-control" id="skorklub" placeholder="Masukkan Skor klub" required>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-5">
+                                        <select class="form-control form-control-md mt-1" id="klub">
+                                          <option>Pilih Club</option>
+                                        </select>
+                                        <div class="mt-1">
+                                          <input type="number" class="form-control" id="skorklub" placeholder="Masukkan Skor klub" required>
+                                        </div>
+                                      </div>
+  
+                                      <div class="col-md-2">
+                                        <button type="submit" class="btn btn-secondary" onClick="tambahlistclub();" value="tambahlistclub">Simpan</button>
+                                      </div>
+                                </div>
+                                      
+            
+                              </div>
+                                  
+                    </div>
+                             
+                              
+                          </form>
+                      </div>
+                    </div>
+          </div>
+           
+          <div class="mt-3 mb-3">
+            <div class="text-center mb-1 mt-1">
+              <h3>Data Skor</h3>
+            </div>
+            
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Nama Klub</th>
+                  <th scope="col">Main</th>
+                  <th scope="col">M</th>
+                  <th scope="col">K</th>
+                  <th scope="col">S</th>
+                  <th scope="col">Total Skor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Persib</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Arema</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Persija</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+          </div>
+          
+
+
+
+    </div>
+
+    <script type="text/javascript">
+
+      var dataKlubArray = [
+        {
+        "namaklub" : "Aptavis Club",
+        "kotaklub" : "Bandung",
+        }
+      ];
+       
+      function add() {
+         var masukanNama = document.getElementById('namaklub');
+         var masukanKota = document.getElementById('kotaklub');
+
+        if(masukanNama.value.toString().trim() === "") {
+          alert("masukkan nama klub dengan benar")
+          masukanNama.value = "";
+         } else if(masukanKota.value.toString().trim() === "") {
+          alert("masukkan kota klub dengan benar")
+          masukanKota.value = "";
+         } else  {
+          let InputArray = {
+            "namaklub" : masukanNama.value,
+            "kotaklub" : masukanKota.value
+          }
+          dataKlubArray.push(InputArray);
+          masukanNama.value = '';
+          masukanKota.value = '';
+          alert('jika nanti data yang kamu inputkan tidak tampil pada data disamping, berarti kamu harus menginputkan data yang berbeda ya!. Jika tampil, maka data sudah berhasil tersimpan!:)')
+          show();
+         }
+        }
+
+        
+        const cleanArray = dataKlubArray.reduce((unique, o) => {
+          if(!unique.some(obj => obj.namaklub === o.namaklub)) {
+            unique.push(o);
+          } 
+          return unique;
+        },[]);
+       
+      function show() {
+         var html = '';
+         var result = '';
+          const cleanArray = dataKlubArray.reduce((unique, o) => {
+          if(!unique.some(obj => obj.namaklub === o.namaklub)) {
+            unique.push(o);
+          } 
+          return unique;
+        },[]);
+         for (var i=0; i<cleanArray.length; i++) {
+          html += '<li>' + 'Nama Klub :' + '&nbsp' +  cleanArray[i].namaklub + '<br/>' + 'Kota Klub :' + '&nbsp' + cleanArray[i].kotaklub  + '</li>';
+          result += "<option value="+i+">"+cleanArray[i].namaklub+"</option>"
+            
+          // html += '<li>' + 'Nama Klub :' + '&nbsp' +  dataKlubArray[i].namaklub + '<br/>' + 'Kota Klub :' + '&nbsp' + dataKlubArray[i].kotaklub + '<br/>' + 'Skor:' + '&nbsp' + dataKlubArray[i].skor  + '</li>';
+         }
+         var tampil = document.getElementById('isiArray');
+         tampil.innerHTML = html;
+
+         let klub = document.getElementById('klub');
+         klub.innerHTML += result;
+      }
+
+
+
+        var html = '';
+         for (var i=0; i<dataKlubArray.length; i++) {
+          html += '<li>' + 'Nama Klub :' + '&nbsp' +  dataKlubArray[i].namaklub + '<br/>' + 'Kota Klub :' + '&nbsp' + dataKlubArray[i].kotaklub  + '</li>';
+          // html += '<li>' + 'Nama Klub :' + '&nbsp' +  dataKlubArray[i].namaklub + '<br/>' + 'Kota Klub :' + '&nbsp' + dataKlubArray[i].kotaklub + '<br/>' + 'Skor:' + '&nbsp' + dataKlubArray[i].skor  + '</li>';
+         }
+         var tampil = document.getElementById('isiArray');
+         tampil.innerHTML = html;
+
+         $('input[type="radio"]').click(function () {
+          var inputValue = $(this).attr("value");
+          if (inputValue == "one") {
+            $("#one").show();
+            $("#multiple").hide();
+          } else {
+            $("#one").hide();
+            $("#multiple").show();
+          } 
+        });
+
+        var dataSkor = [
+        {
+        "klub" : "Aptavis Club",
+        "skor" : "3",
+        }
+      ];
+
+        function masukanskor() {
+         var skorklub1 = document.getElementById('skorklub1');
+         var skorklub2 = document.getElementById('skorklub2');
+         var namaklub = document.getElementById('klub');
+         
+          let InputSkor = {
+            "klub" : namaklub.value,
+            "skor" : skorklub1.value,
+          }
+
+          let InputSkor2 = {
+            "klub" : namaklub.value,
+            "skor" : skorklub2.value
+          }
+          dataSkor.push(InputSkor);
+          dataSkor.push(InputSkor2);
+          skorklub1.value = '';
+          skorklub2.value = '';
+          alert('data berhasil tersimpan')
+          showSkor();
+         
+        }
+
+        function showSkor() {
+         var h = '';
+         for (var i=0; i<dataSkor.length; i++) {
+          h += '<li>' + 'Nama Klub 1 :' + '&nbsp' +  dataSkor[i].klub1 + '<br/>' + 'Skor Klub 1 :' + '&nbsp' + dataSkor[i].skor1  + '</li>';
+          
+         }
+         var showing = document.getElementById('skorlist');
+         showing.innerHTML = h;
+      }
+
+      
+         
+            
+      
+    </script>
+
+      
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+    
+  </body>
+</html>
